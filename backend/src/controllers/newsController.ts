@@ -11,7 +11,7 @@ export const getNews = async (req: Request, res: Response) => {
     // Convert image paths to full URLs
     const newsWithFullImagePaths = news.map(item => ({
       ...item.toObject(),
-      image: item.image ? `http://localhost:3000${item.image}` : null
+      image: item.image ? `${process.env.BASE_URL}${item.image}` : null
     }));
     res.json(newsWithFullImagePaths);
   } catch (error: unknown) {
@@ -34,7 +34,7 @@ export const getNewsById = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const newsWithFullImagePath = {
       ...news.toObject(),
-      image: news.image ? `http://localhost:3000${news.image}` : null
+      image: news.image ? `${process.env.BASE_URL}${news.image}` : null
     };
     res.json(newsWithFullImagePath);
   } catch (error: unknown) {
@@ -71,7 +71,7 @@ export const createNews = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const newsWithFullImagePath = {
       ...news.toObject(),
-      image: news.image ? `http://localhost:3000${news.image}` : null
+      image: news.image ? `${process.env.BASE_URL}${news.image}` : null
     };
     
     console.log('Saved news:', newsWithFullImagePath);
@@ -131,7 +131,7 @@ export const updateNews = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const newsWithFullImagePath = {
       ...news.toObject(),
-      image: news.image ? `http://localhost:3000${news.image}` : null
+      image: news.image ? `${process.env.BASE_URL}${news.image}` : null
     };
 
     console.log('Updated news:', newsWithFullImagePath);

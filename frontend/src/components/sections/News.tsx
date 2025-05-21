@@ -111,9 +111,8 @@ const News = () => {
                     <h3 className="text-2xl text-white font-bold mb-2">{newsItems[0].title}</h3>
                     <div className="flex items-center text-sm text-gray-200">
                       <Calendar className="h-4 w-4 mr-2" />
-                      <span className="mr-4">{newsItems[0].date}</span>
+                      <span className="mr-4">{new Date(newsItems[0].date).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
                       <Clock className="h-4 w-4 mr-2" />
-                      <span>{newsItems[0].readTime}</span>
                     </div>
                   </div>
                 </div>
@@ -153,9 +152,7 @@ const News = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center text-sm text-gray-500">
                       <Calendar className="h-4 w-4 mr-2" />
-                      <span className="mr-4">{item.date}</span>
-                      <Clock className="h-4 w-4 mr-2" />
-                      <span>{item.readTime}</span>
+                      <span className="mr-4">{new Date(item.date).toLocaleDateString('it-IT', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
                     </div>
                     <Link
                       to={`/notizie/${item.id}`}

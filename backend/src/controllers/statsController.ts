@@ -11,7 +11,7 @@ export const getStats = async (req: Request, res: Response) => {
     // Convert image paths to full URLs
     const statsWithFullImagePaths = stats.map(item => ({
       ...item.toObject(),
-      image: item.image ? `http://localhost:3000${item.image}` : null
+      image: item.image ? `${process.env.BASE_URL}${item.image}` : null
     }));
     res.json(statsWithFullImagePaths);
   } catch (error: unknown) {
@@ -34,7 +34,7 @@ export const getStatById = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const statWithFullImagePath = {
       ...stat.toObject(),
-      image: stat.image ? `http://localhost:3000${stat.image}` : null
+      image: stat.image ? `${process.env.BASE_URL}${stat.image}` : null
     };
     res.json(statWithFullImagePath);
   } catch (error: unknown) {
@@ -68,7 +68,7 @@ export const createStat = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const statWithFullImagePath = {
       ...stat.toObject(),
-      image: stat.image ? `http://localhost:3000${stat.image}` : null
+      image: stat.image ? `${process.env.BASE_URL}${stat.image}` : null
     };
     
     console.log('Saved stat:', statWithFullImagePath);
@@ -128,7 +128,7 @@ export const updateStat = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const statWithFullImagePath = {
       ...stat.toObject(),
-      image: stat.image ? `http://localhost:3000${stat.image}` : null
+      image: stat.image ? `${process.env.BASE_URL}${stat.image}` : null
     };
 
     console.log('Updated stat:', statWithFullImagePath);

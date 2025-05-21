@@ -11,7 +11,7 @@ export const getProjects = async (req: Request, res: Response) => {
     // Convert image paths to full URLs
     const projectsWithFullImagePaths = projects.map(item => ({
       ...item.toObject(),
-      image: item.image ? `http://localhost:3000${item.image}` : null
+      image: item.image ? `${process.env.BASE_URL}${item.image}` : null
     }));
     res.json(projectsWithFullImagePaths);
   } catch (error: unknown) {
@@ -34,7 +34,7 @@ export const getProjectById = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const projectWithFullImagePath = {
       ...project.toObject(),
-      image: project.image ? `http://localhost:3000${project.image}` : null
+      image: project.image ? `${process.env.BASE_URL}${project.image}` : null
     };
     res.json(projectWithFullImagePath);
   } catch (error: unknown) {
@@ -70,7 +70,7 @@ export const createProject = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const projectWithFullImagePath = {
       ...project.toObject(),
-      image: project.image ? `http://localhost:3000${project.image}` : null
+      image: project.image ? `${process.env.BASE_URL}${project.image}` : null
     };
     
     console.log('Saved project:', projectWithFullImagePath);
@@ -131,7 +131,7 @@ export const updateProject = async (req: Request, res: Response) => {
     // Convert image path to full URL
     const projectWithFullImagePath = {
       ...project.toObject(),
-      image: project.image ? `http://localhost:3000${project.image}` : null
+      image: project.image ? `${process.env.BASE_URL}${project.image}` : null
     };
 
     console.log('Updated project:', projectWithFullImagePath);
